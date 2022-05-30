@@ -7,13 +7,11 @@ set -e
 npm run build
 
 # переход в каталог сборки
-ren dist docs
-cd docs
+cd dist
 
 # если вы публикуете на пользовательский домен
 # echo 'www.example.com' > CNAME
 
-git init
 git add -A
 git commit -m 'deploy'
 
@@ -25,4 +23,3 @@ git commit -m 'deploy'
 git push -u origin gh-pages
 
 cd -
-ren docs dist
