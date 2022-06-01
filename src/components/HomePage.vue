@@ -12,10 +12,10 @@
         <v-list-item
           v-for="(item, i) in mainMenuList"
           :key="`main-menu-item-${i}`"
-          :value="item"
+          @click="goToRoute(item.componentName)"
           active-color="primary"
         >
-          <v-list-item-title v-text="item"></v-list-item-title>
+          <v-list-item-title v-text="item.text"></v-list-item-title>
         </v-list-item>
       </v-list>
     </v-card-content>
@@ -30,14 +30,37 @@ export default {
   name: 'HomePage',
   data: () => ({
     mainMenuList: [
-      'Заявка на доступ в помещения Управления и создание ключа ЭЦП',
-      'Заявка об обеспечении АРМ',
-      'Заявка на доступ к ИР',
-      'Заявка на обеспечение канцелярскими товарами и мебелью',
-      'Заявка о включении в приказ на допуск к ИС',
-      'Заявка на проведение инструктажей'
+      {
+        text: 'Заявка на доступ в помещения Управления и создание ключа ЭЦП',
+        componentName: 'RequestForRoomAccess'
+      },
+      {
+        text: 'Заявка об обеспечении АРМ',
+        componentName: 'HomePage'
+      },
+      {
+        text: 'Заявка на доступ к ИР',
+        componentName: 'HomePage'
+      },
+      {
+        text: 'Заявка на обеспечение канцелярскими товарами и мебелью',
+        componentName: 'HomePage'
+      },
+      {
+        text: 'Заявка о включении в приказ на допуск к ИС',
+        componentName: 'HomePage'
+      },
+      {
+        text: 'Заявка на проведение инструктажей',
+        componentName: 'HomePage'
+      }
     ]
-  })
+  }),
+  methods: {
+    goToRoute: function (componentName) {
+      this.$router.push({ name: componentName })
+    }
+  }
 }
 </script>
 

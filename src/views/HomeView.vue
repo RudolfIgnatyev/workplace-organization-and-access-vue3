@@ -1,5 +1,5 @@
 <template>
-  <div class="home pa-3">
+  <div class="ma-3">
     <HomePage />
   </div>
 </template>

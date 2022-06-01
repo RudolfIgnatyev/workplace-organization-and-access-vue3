@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar app>
       <v-row class="px-2 justify-space-between">
-        <v-btn elevation="1">
+        <v-btn @click="goToHomePage" elevation="1">
           К главной странице
         </v-btn>
         <v-avatar color="primary" tile>
@@ -25,7 +25,12 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  methods: {
+    goToHomePage: function () {
+      this.$router.push({ name: 'HomePage' })
+    }
+  }
 }
 </script>
 

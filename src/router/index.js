@@ -1,11 +1,21 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomePage from '../components/HomePage.vue'
+import RequestForRoomAccess from '../components/RequestForRoomAccess.vue'
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path: '/home-page',
+    name: 'HomePage',
+    component: HomePage
+  },
+  {
+    path: '/request-for-room-access',
+    name: 'RequestForRoomAccess',
+    component: RequestForRoomAccess
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/home-page'
   },
   {
     path: '/about',
