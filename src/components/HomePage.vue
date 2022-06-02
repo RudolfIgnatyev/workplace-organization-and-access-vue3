@@ -44,7 +44,7 @@ export default {
       },
       {
         text: 'Заявка на обеспечение канцелярскими товарами и мебелью',
-        componentName: 'HomePage'
+        componentName: 'RequestForProvideEmployeeWithOfficeSupplies'
       },
       {
         text: 'Заявка о включении в приказ на допуск к ИС',

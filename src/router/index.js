@@ -3,6 +3,7 @@ import HomePage from '../components/HomePage.vue'
 import RequestForRoomAccess from '../components/RequestForRoomAccess.vue'
 import RequestForProvisionOfAW from '../components/RequestForProvisionOfAW.vue'
 import RequestForEmployeeAccessToIR from '../components/RequestForEmployeeAccessToIR.vue'
+import RequestForProvideEmployeeWithOfficeSupplies from '../components/RequestForProvideEmployeeWithOfficeSupplies.vue'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/request-for-employee-access-to-ir',
     name: 'RequestForEmployeeAccessToIR',
     component: RequestForEmployeeAccessToIR
+  },
+  {
+    path: '/request-for-provide-employee-with-office-supplies',
+    name: 'RequestForProvideEmployeeWithOfficeSupplies',
+    component: RequestForProvideEmployeeWithOfficeSupplies
   },
   {
     path: '/:pathMatch(.*)*',
