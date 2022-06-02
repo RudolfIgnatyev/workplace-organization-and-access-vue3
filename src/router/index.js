@@ -5,6 +5,7 @@ import RequestForProvisionOfAW from '../components/RequestForProvisionOfAW.vue'
 import RequestForEmployeeAccessToIR from '../components/RequestForEmployeeAccessToIR.vue'
 import RequestForProvideEmployeeWithOfficeSupplies from '../components/RequestForProvideEmployeeWithOfficeSupplies.vue'
 import RequestForApplicationForInclusionInOrder from '../components/RequestForApplicationForInclusionInOrder.vue'
+import RequestForBriefings from '../components/RequestForBriefings'
 
 const routes = [
   {
@@ -36,6 +37,11 @@ const routes = [
     path: '/request-for-application-for-inclusion-in-order',
     name: 'RequestForApplicationForInclusionInOrder',
     component: RequestForApplicationForInclusionInOrder
+  },
+  {
+    path: '/request-for-briefings',
+    name: 'RequestForBriefings',
+    component: RequestForBriefings
   },
   {
     path: '/:pathMatch(.*)*',

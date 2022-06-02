@@ -52,7 +52,7 @@ export default {
       },
       {
         text: 'Заявка на проведение инструктажей',
-        componentName: 'HomePage'
+        componentName: 'RequestForBriefings'
       }
     ]
   }),

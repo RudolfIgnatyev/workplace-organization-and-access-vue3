@@ -1,0 +1,43 @@
+<template>
+  <v-card tile max-width="80vw" class="mx-auto my-3">
+    <v-col class="d-flex flex-column align-center">
+      <v-card-title>
+        ЗАЯВКА
+      </v-card-title>
+      <v-card-subtitle>
+        на проведение инструктажей нового сотрудника
+      </v-card-subtitle>
+      <v-card-content>
+        <v-card-text class="pl-6 main-paragraph">
+          Прошу провести инструктажи для нового сотрудника с табельным номером,
+          назначенного на должность в Управления Федерального казначейства по Республике Марий Эл.
+        </v-card-text>
+        <v-card-text class="main-paragraph">
+          Начальник
+        </v-card-text>
+      </v-card-content>
+    </v-col>
+    <v-card-actions class="d-flex justify-end">
+      <v-btn elevation="1">
+        Отправить
+      </v-btn>
+    </v-card-actions>
+  </v-card>
+</template>
+
+<script>
+export default {
+  name: 'RequestForBriefings',
+  data() {
+    return {
+      //
+    }
+  }
+}
+</script>
+
+<style scoped>
+.main-paragraph {
+  text-align: justify;
+}
+</style>
