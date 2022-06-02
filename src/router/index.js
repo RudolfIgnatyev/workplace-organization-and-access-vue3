@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../components/HomePage.vue'
 import RequestForRoomAccess from '../components/RequestForRoomAccess.vue'
 import RequestForProvisionOfAW from '../components/RequestForProvisionOfAW.vue'
+import RequestForEmployeeAccessToIR from '../components/RequestForEmployeeAccessToIR.vue'
 
 const routes = [
   {
@@ -18,6 +19,11 @@ const routes = [
     path: '/request-for-provision-of-aw',
     name: 'RequestForProvisionOfAW',
     component: RequestForProvisionOfAW
+  },
+  {
+    path: '/request-for-employee-access-to-ir',
+    name: 'RequestForEmployeeAccessToIR',
+    component: RequestForEmployeeAccessToIR
   },
   {
     path: '/:pathMatch(.*)*',

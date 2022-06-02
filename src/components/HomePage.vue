@@ -40,7 +40,7 @@ export default {
       },
       {
         text: 'Заявка на доступ к ИР',
-        componentName: 'HomePage'
+        componentName: 'RequestForEmployeeAccessToIR'
       },
       {
         text: 'Заявка на обеспечение канцелярскими товарами и мебелью',
