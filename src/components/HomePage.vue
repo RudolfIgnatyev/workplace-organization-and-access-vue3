@@ -36,7 +36,7 @@ export default {
       },
       {
         text: 'Заявка об обеспечении АРМ',
-        componentName: 'HomePage'
+        componentName: 'RequestForProvisionOfAW'
       },
       {
         text: 'Заявка на доступ к ИР',
