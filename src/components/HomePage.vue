@@ -48,7 +48,7 @@ export default {
       },
       {
         text: 'Заявка о включении в приказ на допуск к ИС',
-        componentName: 'HomePage'
+        componentName: 'RequestForApplicationForInclusionInOrder'
       },
       {
         text: 'Заявка на проведение инструктажей',
