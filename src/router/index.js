@@ -6,12 +6,19 @@ import RequestForEmployeeAccessToIR from '../components/RequestForEmployeeAccess
 import RequestForProvideEmployeeWithOfficeSupplies from '../components/RequestForProvideEmployeeWithOfficeSupplies.vue'
 import RequestForApplicationForInclusionInOrder from '../components/RequestForApplicationForInclusionInOrder.vue'
 import RequestForBriefings from '../components/RequestForBriefings'
+import AuthorizeForm from '../components/AuthorizeForm.vue'
+import store from '@/store'
 
 const routes = [
   {
     path: '/home-page',
     name: 'HomePage',
     component: HomePage
+  },
+  {
+    path: '/authorize-form',
+    name: 'AuthorizeForm',
+    component: AuthorizeForm
   },
   {
     path: '/request-for-room-access',
@@ -60,6 +67,13 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+router.beforeEach((to) => {
+  const authStatus = store.getters['employee/getAuthStatus']
+  if (authStatus === 0 && to.name !== 'AuthorizeForm') {
+    return { name: 'AuthorizeForm' }
+  }
 })
 
 export default router

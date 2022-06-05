@@ -26,6 +26,9 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+// import store from '@/store'
+
 export default {
   name: 'HomePage',
   data: () => ({
@@ -59,6 +62,18 @@ export default {
   methods: {
     goToRoute: function (componentName) {
       this.$router.push({ name: componentName })
+    }
+  },
+  computed: {
+    ...mapGetters({
+      employee: 'employee/getEmployee'
+    })
+  },
+  watch: {
+    'employee'(newVal) {
+      if (newVal.id === 0) {
+        this.$router.push({ name: 'AuthorizeForm' })
+      }
     }
   }
 }

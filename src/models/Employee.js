@@ -6,7 +6,7 @@ class Employee {
     this.patronymics = ''
     this.department = ''
     this.position = ''
-    this.timCardNumber = ''
+    this.timeCardNumber = ''
     this.account = {
       login: '',
       password: '',
