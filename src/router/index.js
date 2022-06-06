@@ -7,6 +7,7 @@ import RequestForProvideEmployeeWithOfficeSupplies from '../components/RequestFo
 import RequestForApplicationForInclusionInOrder from '../components/RequestForApplicationForInclusionInOrder.vue'
 import RequestForBriefings from '../components/RequestForBriefings'
 import AuthorizeForm from '../components/AuthorizeForm.vue'
+import EditAccount from '../components/EditAccount.vue'
 import store from '@/store'
 
 const routes = [
@@ -19,6 +20,11 @@ const routes = [
     path: '/authorize-form',
     name: 'AuthorizeForm',
     component: AuthorizeForm
+  },
+  {
+    path: '/edit-account',
+    name: 'EditAccount',
+    component: EditAccount
   },
   {
     path: '/request-for-room-access',

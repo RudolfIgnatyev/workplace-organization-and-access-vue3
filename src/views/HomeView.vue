@@ -1,5 +1,5 @@
 <template>
-  <div class="ma-3">
+  <div>
     <HomePage />
   </div>
 </template>

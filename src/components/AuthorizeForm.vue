@@ -1,6 +1,4 @@
 <template>
-  <!-- <v-alert
-  ></v-alert> -->
   <v-card tile max-width="50vw" class="mx-auto my-3">
     <v-container class="d-flex flex-column">
       <v-card-title>
@@ -31,7 +29,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import store from '@/store'
 
 export default {
@@ -41,7 +38,6 @@ export default {
       login: '',
       password: '',
       alertMessage: '',
-      // curEmployee: null,
       isValidating: false,
       alertExists: false,
       rules: {
@@ -66,10 +62,11 @@ export default {
       }
     }
   },
-  computed: {
-    ...mapGetters({
-      employee: 'employee/getEmployee'
-    })
+  mounted() {
+    const authStatus = store.getters['employee/getAuthStatus']
+    if (authStatus === 1) {
+      this.$router.push({ name: 'HomePage' })
+    }
   }
 }
 </script>

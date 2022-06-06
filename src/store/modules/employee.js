@@ -43,25 +43,25 @@ const actions = {
     const employee = state.employeeList.find(el => el.account.login === account.login && el.account.password === account.password)
     if (employee) commit('setEmployee', { employee })
   },
-  // logout({ commit, state }) {
-  //   if (state.currentEmployee.id > 0) {
-  //     const employee = {
-  //       id: 0,
-  //       lastName: '',
-  //       firstName: '',
-  //       patronymics: '',
-  //       department: '',
-  //       position: '',
-  //       timeCardNumber: '',
-  //       account: {
-  //         login: '',
-  //         password: '',
-  //         type: ''
-  //       }
-  //     }
-  //     commit('unsetEmployee', { employee })
-  //   }
-  // },
+  logout({ commit, state }) {
+    if (state.currentEmployee.id > 0) {
+      const employee = {
+        id: 0,
+        lastName: '',
+        firstName: '',
+        patronymics: '',
+        department: '',
+        position: '',
+        timeCardNumber: '',
+        account: {
+          login: '',
+          password: '',
+          type: ''
+        }
+      }
+      commit('unsetEmployee', { employee })
+    }
+  },
   registerUser({ commit, state }, employee) {
     const registeredUser = state.employeeList.find(el => el.id === employee.id)
     if (!registeredUser) {
@@ -69,9 +69,12 @@ const actions = {
       commit('pushEmployeeToEmployeeList', { employee })
     }
   },
-  editEmployeeData({ commit, state }, employee) {
+  editAnotherAccount({ commit, state }, employee) {
     const registeredUser = state.employeeList.find(el => el.id === employee.id)
     if (!registeredUser) commit('changeEmployeeOfEmployeeList', { employee })
+  },
+  editOwnAccount({ commit }, employee) {
+    commit('setEmployee', { employee })
   }
 }
 
@@ -80,9 +83,9 @@ const mutations = {
   setEmployee(state, { employee }) {
     state.currentEmployee = employee
   },
-  // unsetEmployee(state, { employee }) {
-  //   state.currentEmployee = employee
-  // },
+  unsetEmployee(state, { employee }) {
+    state.currentEmployee = employee
+  },
   pushEmployeeToEmployeeList(state, { employee }) {
     state.employeeList.push(employee)
   },
