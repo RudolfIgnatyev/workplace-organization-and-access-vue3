@@ -68,15 +68,12 @@ export default {
       employee: 'employee/getEmployee'
     })
   },
-  watch: {
+  watched: {
     'employee'(newVal) {
-      if (newVal.id === 0) {
+      if (newVal === 0) {
         this.$router.push({ name: 'AuthorizeForm' })
       }
     }
   }
 }
 </script>
-
-<style scoped>
-</style>

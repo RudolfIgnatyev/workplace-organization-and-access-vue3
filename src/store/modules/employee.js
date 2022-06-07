@@ -8,15 +8,13 @@ const state = () => ({
       id: 1,
       lastName: 'Иванов',
       firstName: 'Иван',
-      patronymics: 'Иванович',
+      patronymic: 'Иванович',
       department: 'Отдел информационных систем',
       position: 'системный администратор',
       timeCardNumber: '12345678910',
-      account: {
-        login: 'admin',
-        password: 'admin',
-        type: 'администратор'
-      }
+      login: 'admin',
+      password: 'admin',
+      type: 'администратор'
     }
   ],
   logoutStatus: 0,
@@ -31,50 +29,50 @@ const getters = {
   getEmployee: (state) => {
     return state.currentEmployee
   },
+  getAnotherEmployee: (state) => (id) => {
+    console.log('getAnotherEmployee')
+    return state.employeeList.find(el => el.id === parseInt(id))
+  },
   getAuthStatus: (state) => {
     if (state.currentEmployee.id > 0) return state.loginStatus
     else return state.logoutStatus
   },
+  getAnotherEmployeeWithIdenticalLogin: (state) => (employee) => {
+    const foundEmployee = state.employeeList.find(el => (el.login === employee.login) && (el.id !== employee.id))
+    if (foundEmployee) return foundEmployee
+    return null
+  }
 }
 
 // actions
 const actions = {
   authorize({ commit, state }, account) {
-    const employee = state.employeeList.find(el => el.account.login === account.login && el.account.password === account.password)
+    const employee = state.employeeList.find(el => (el.login === account.login) && (el.password === account.password))
     if (employee) commit('setEmployee', { employee })
   },
-  logout({ commit, state }) {
-    if (state.currentEmployee.id > 0) {
-      const employee = {
-        id: 0,
-        lastName: '',
-        firstName: '',
-        patronymics: '',
-        department: '',
-        position: '',
-        timeCardNumber: '',
-        account: {
-          login: '',
-          password: '',
-          type: ''
-        }
-      }
-      commit('unsetEmployee', { employee })
-    }
+  logout({ commit }) {
+    const defaultEmployee = new Employee()
+    commit('unsetEmployee', { defaultEmployee })
   },
-  registerUser({ commit, state }, employee) {
-    const registeredUser = state.employeeList.find(el => el.id === employee.id)
+  createAccount({ commit, state }, employee) {
+    const registeredUser = state.employeeList.find(el => el.login === employee.login)
     if (!registeredUser) {
       employee.id = state.employeeList[state.employeeList.length - 1].id + 1
       commit('pushEmployeeToEmployeeList', { employee })
     }
   },
   editAnotherAccount({ commit, state }, employee) {
-    const registeredUser = state.employeeList.find(el => el.id === employee.id)
-    if (!registeredUser) commit('changeEmployeeOfEmployeeList', { employee })
+    const userWithIdenticalLogin = state.employeeList.find(el => (el.login === employee.login) && (el.id !== employee.id))
+    if (!userWithIdenticalLogin) {
+      commit('changeEmployeeOfEmployeeList', { employee })
+    }
   },
-  editOwnAccount({ commit }, employee) {
-    commit('setEmployee', { employee })
+  editOwnAccount({ commit, state }, employee) {
+    const userWithIdenticalLogin = state.employeeList.find(el => (el.login === employee.login) && (el.id !== employee.id))
+    if (!userWithIdenticalLogin) {
+      commit('setEmployee', { employee })
+      commit('changeEmployeeOfEmployeeList', { employee })
+    }
   }
 }
 
@@ -84,7 +82,7 @@ const mutations = {
     state.currentEmployee = employee
   },
   unsetEmployee(state, { employee }) {
-    state.currentEmployee = employee
+    state.currentEmployee = { ...employee }
   },
   pushEmployeeToEmployeeList(state, { employee }) {
     state.employeeList.push(employee)

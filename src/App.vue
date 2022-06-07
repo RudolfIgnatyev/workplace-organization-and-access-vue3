@@ -2,7 +2,7 @@
   <v-app app>
     <v-app-bar>
       <template v-slot:prepend>
-        <v-btn @click="goToPage('HomePage')" elevation="1" class="ml-5">
+        <v-btn v-if="employee.id > 0" @click="goToRoute('HomePage', null)" elevation="1" class="ml-5">
           К главной странице
         </v-btn>
       </template>
@@ -13,12 +13,12 @@
               mdi-account-minus
             </v-icon>
           </v-avatar>
-          <v-avatar @click="goToPage('EditAccount')" color="primary" tile class="ml-3">
+          <v-avatar @click="goToRoute('EditAccount', employee.id)" color="primary" tile class="ml-3">
             <v-icon>
               mdi-account-edit
             </v-icon>
           </v-avatar>
-          <v-avatar v-if="employee.account.type = 'администратор'" color="primary" tile class="ml-3">
+          <v-avatar v-if="employee.type = 'администратор'" @click="goToRoute('ManageAccounts', null)" color="primary" tile class="ml-3">
             <v-icon>
               mdi-account-multiple-plus
             </v-icon>
@@ -26,7 +26,7 @@
         </div>
       </template>
     </v-app-bar>
-    <v-main class="main-block mt-3">
+    <v-main class="main-block mt-5">
       <v-dialog v-model="inStateOfConfirmation">
         <v-card>
           <v-card-subtitle>
@@ -65,13 +65,14 @@ export default {
     }
   },
   methods: {
-    goToPage: function (pageName) {
-      this.$router.push({ name: pageName })
+    goToRoute: function (componentName, param) {
+      if (param) this.$router.push({ name: componentName, params: { id: param } })
+      else this.$router.push({ name: componentName })
     },
     logout: function () {
       store.dispatch('employee/logout')
       this.inStateOfConfirmation = false
-      this.$router.push({ name: 'HomePage' })
+      this.$router.push({ name: 'AuthorizeForm' })
     }
   },
   computed: {
@@ -93,9 +94,11 @@ export default {
 .main-block {
   height: 100px;
   overflow-y: auto;
+  background-color: oldlace;
 }
 .v-footer {
   min-height: 35px;
   max-height: 35px;
+  background-color: rgb(182, 230, 232);
 }
 </style>

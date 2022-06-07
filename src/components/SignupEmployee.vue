@@ -1,11 +1,8 @@
 <template>
   <v-card tile max-width="66vw" class="mx-auto">
     <v-container class="d-flex flex-column">
-      <v-card-title v-if="parseInt($route.params.id) === myAccount.id">
-        Измените данные собственного аккаунта
-      </v-card-title>
-      <v-card-title v-else>
-        Измените данные выбранного аккаунта
+      <v-card-title>
+        Зарегистрируйте сотрудника в системе
       </v-card-title>
       <v-card-content>
         <v-form v-model="isValidating">
@@ -35,7 +32,7 @@
           <v-text-field v-model="curEmployee.password" :rules="[rules.required]" label="Пароль" type="password"
             variant="outlined" counter="20" maxlength="20">
           </v-text-field>
-          <v-radio-group v-if="parseInt($route.params.id) !== myAccount.id" v-model="curEmployee.type">
+          <v-radio-group v-model="curEmployee.type">
             <v-radio label="пользователь" value="Тип аккаунта: пользователь"></v-radio>
             <v-radio label="администратор" value="Тип аккаунта: администратор"></v-radio>
           </v-radio-group>
@@ -43,8 +40,8 @@
       </v-card-content>
     </v-container>
     <v-card-actions class="pr-8 pb-8 d-flex justify-end">
-      <v-btn @click="authorize" elevation="1">
-        Изменить
+      <v-btn @click="signup" elevation="1">
+        Зарегистрировать
       </v-btn>
     </v-card-actions>
   </v-card>
@@ -59,13 +56,13 @@
 
 <script>
 import store from '@/store'
+import { mapGetters } from 'vuex'
 import Employee from '@/models/Employee'
 
 export default {
-  name: 'EditAccount',
+  name: 'SignupEmployee',
   data() {
     return {
-      myAccount: new Employee(),
       curEmployee: new Employee(),
       alertMessage: '',
       isValidating: false,
@@ -79,19 +76,14 @@ export default {
     }
   },
   methods: {
-    authorize: function () {
+    signup: function () {
       if (this.isValidating) {
         if (store.getters['employee/getAnotherEmployeeWithIdenticalLogin'](this.curEmployee)) {
-          this.showAlertMessage('Введённый логин уже занят! Отмена изменения')
+          this.showAlertMessage('Введённый логин уже занят! Отмена регистрации')
           return
         }
-        if (parseInt(this.$route.params.id) === this.myAccount.id) {
-          store.dispatch('employee/editOwnAccount', this.curEmployee)
-          this.$router.push({ name: 'HomePage' })
-        } else {
-          store.dispatch('employee/editAnotherAccount', this.curEmployee)
-          this.$router.push({ name: 'HomePage' })
-        }
+        store.dispatch('employee/createAccount', this.curEmployee)
+        this.$router.push({ name: 'HomePage' })
       }
     },
     showAlertMessage: function (message) {
@@ -102,13 +94,10 @@ export default {
       }, 3000)
     }
   },
-  mounted() {
-    this.myAccount = { ...store.getters['employee/getEmployee'] }
-    if (parseInt(this.$route.params.id) === this.myAccount.id) {
-      this.curEmployee = { ...this.myAccount }
-    } else {
-      this.curEmployee = { ...store.getters['employee/getAnotherEmployee'](this.$route.params.id) }
-    }
+  computed: {
+    ...mapGetters({
+      employee: 'employee/getEmployee'
+    })
   }
 }
 </script>

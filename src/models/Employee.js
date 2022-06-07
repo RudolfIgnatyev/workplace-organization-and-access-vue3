@@ -3,15 +3,13 @@ class Employee {
     this.id = 0
     this.lastName = ''
     this.firstName = ''
-    this.patronymics = ''
+    this.patronymic = ''
     this.department = ''
     this.position = ''
     this.timeCardNumber = ''
-    this.account = {
-      login: '',
-      password: '',
-      type: ''
-    }
+    this.login = '',
+    this.password = '',
+    this.type = 'пользователь'
   }
 }
 

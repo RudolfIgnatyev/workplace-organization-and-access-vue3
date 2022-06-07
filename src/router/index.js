@@ -8,6 +8,8 @@ import RequestForApplicationForInclusionInOrder from '../components/RequestForAp
 import RequestForBriefings from '../components/RequestForBriefings'
 import AuthorizeForm from '../components/AuthorizeForm.vue'
 import EditAccount from '../components/EditAccount.vue'
+import SignupEmployee from '../components/SignupEmployee.vue'
+import ManageAccounts from '../components/ManageAccounts.vue'
 import store from '@/store'
 
 const routes = [
@@ -22,9 +24,19 @@ const routes = [
     component: AuthorizeForm
   },
   {
-    path: '/edit-account',
+    path: '/edit-account/:id',
     name: 'EditAccount',
     component: EditAccount
+  },
+  {
+    path: '/signup-employee',
+    name: 'SignupEmployee',
+    component: SignupEmployee
+  },
+  {
+    path: '/manage-accounts',
+    name: 'ManageAccounts',
+    component: ManageAccounts
   },
   {
     path: '/request-for-room-access',
@@ -59,14 +71,6 @@ const routes = [
   {
     path: '/:pathMatch(.*)*',
     redirect: '/home-page'
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   }
 ]
 

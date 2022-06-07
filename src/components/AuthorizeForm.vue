@@ -1,5 +1,5 @@
 <template>
-  <v-card tile max-width="50vw" class="mx-auto my-3">
+  <v-card tile max-width="66vw" class="mx-auto">
     <v-container class="d-flex flex-column">
       <v-card-title>
         Пройдите авторизацию
@@ -7,9 +7,9 @@
       <v-card-content>
         <v-form v-model="isValidating">
           <v-text-field v-model="login" :rules="[rules.required]" label="Логин" type="login" variant="outlined"
-            counter="15" maxlength="15" clearable></v-text-field>
+            counter="15" maxlength="15" autofocus></v-text-field>
           <v-text-field v-model="password" :rules="[rules.required]" label="Пароль" type="password" variant="outlined"
-            counter="20" maxlength="20" clearable></v-text-field>
+            counter="20" maxlength="20"></v-text-field>
         </v-form>
       </v-card-content>
     </v-container>
@@ -63,7 +63,7 @@ export default {
     }
   },
   mounted() {
-    const authStatus = store.getters['employee/getAuthStatus']
+    const authStatus = { ...store.getters['employee/getAuthStatus'] }
     if (authStatus === 1) {
       this.$router.push({ name: 'HomePage' })
     }
