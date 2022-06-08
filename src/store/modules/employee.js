@@ -26,6 +26,9 @@ const getters = {
   getEmployeeList: (state) => {
     return state.employeeList
   },
+  getEmployeeListByPosition: (state) => {
+    return state.employeeList.find(el => el.position === 'начальник')
+  },
   getEmployee: (state) => {
     return state.currentEmployee
   },
