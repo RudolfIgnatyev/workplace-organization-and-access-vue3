@@ -3,11 +3,9 @@ class Request {
     this.id = 0
     this.title = ''
     this.timeCardNumber = ''
-    this.sendingDate = new Date().toDateString
-    // this.sendingDate = null
+    this.sendingDate = null
     this.state = ''
-    this.deadline = (new Date().getDate() + 5).toDateString
-    // this.deadline = null
+    this.deadline = null
     this.addressee = ''
     this.addresseeId = 0
     this.requestor = ''

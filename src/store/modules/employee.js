@@ -26,15 +26,14 @@ const getters = {
   getEmployeeList: (state) => {
     return state.employeeList
   },
-  getEmployeeListByPosition: (state) => {
-    return state.employeeList.find(el => el.position === 'начальник')
+  getChiefList: (state) => {
+    return state.employeeList.filter(el => (el.position === 'начальник') || (el.position === 'Начальник'))
   },
   getEmployee: (state) => {
     return state.currentEmployee
   },
   getAnotherEmployee: (state) => (id) => {
-    console.log('getAnotherEmployee')
-    return state.employeeList.find(el => el.id === parseInt(id))
+    return state.employeeList.find(el => el.id === id)
   },
   getAuthStatus: (state) => {
     if (state.currentEmployee.id > 0) return state.loginStatus

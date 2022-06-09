@@ -107,7 +107,7 @@ export default {
     if (parseInt(this.$route.params.id) === this.myAccount.id) {
       this.curEmployee = { ...this.myAccount }
     } else {
-      this.curEmployee = { ...store.getters['employee/getAnotherEmployee'](this.$route.params.id) }
+      this.curEmployee = { ...store.getters['employee/getAnotherEmployee'](parseInt(this.$route.params.id)) }
     }
   }
 }

@@ -6,19 +6,19 @@ const state = () => ({
 // getters
 const getters = {
   getFromMeActiveRequestList: (state) => (requestorId) => {
-    return state.requestList.find(el =>
+    return state.requestList.filter(el =>
       ((el.state === 'Отправлена') || (el.state === 'В работе'))
       && (el.requestorId === requestorId)
     )
   },
   getForMeActiveRequestList: (state) => (addresseeId) => {
-    return state.requestList.find(el =>
+    return state.requestList.filter(el =>
       ((el.state === 'Отправлена') || (el.state === 'В работе'))
       && (el.addresseeId === addresseeId)
     )
   },
   getForMeArchiveRequestList: (state) => (addresseeId) => {
-    return state.requestList.find(el =>
+    return state.requestList.filter(el =>
       (el.state === 'Завершена') && (el.addresseeId === addresseeId)
     )
   }
