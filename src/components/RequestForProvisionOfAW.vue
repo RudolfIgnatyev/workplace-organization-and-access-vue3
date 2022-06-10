@@ -1,5 +1,5 @@
 <template>
-  <v-card tile max-width="66vw" class="mx-auto ma-3">
+  <v-card tile max-width="66vw" class="mx-auto my-3">
     <v-col class="d-flex flex-column align-center">
       <v-card-title>
         ЗАЯВКА
