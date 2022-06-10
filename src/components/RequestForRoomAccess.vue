@@ -81,14 +81,14 @@ export default {
     },
     sendRequest: function () {
       const chiefDepNameParts = this.curChief.department.split(' ')
-      const employeeDepNameParts = this.curChief.department.split(' ')
+      const employeeDepNameParts = this.employee.department.split(' ')
       let chefShortDepName = ''
       let employeeShortDepName = ''
       chiefDepNameParts.forEach(el => {
-        chefShortDepName += el.toUpperCase()
+        chefShortDepName += el.charAt(0).toUpperCase()
       })
       employeeDepNameParts.forEach(el => {
-        employeeShortDepName += el.toUpperCase()
+        employeeShortDepName += el.charAt(0).toUpperCase()
       })
       this.curRequest.title = 'Заявка на доступ в помещения Управления и создание ключа ЭЦП'
       this.curRequest.timeCardNumber = this.curEmployee.timeCardNumber
@@ -97,9 +97,9 @@ export default {
       this.curRequest.deadline = new Date()
       this.curRequest.deadline.setDate(this.curRequest.deadline.getDate() + 5)
       this.curRequest.deadline = this.curRequest.deadline.toLocaleDateString('ru')
-      this.curRequest.addressee = this.curChief.lastName + ' ' + this.curChief.firstName.charAt(0) + '.' + this.curChief.patronymic.charAt(0) + '. (' + chefShortDepName + ')'
+      this.curRequest.addressee = this.curChief.lastName + ' ' + this.curChief.firstName.charAt(0).toUpperCase() + '.' + this.curChief.patronymic.charAt(0).toUpperCase() + '. (' + chefShortDepName + ')'
       this.curRequest.addresseeId = this.curChief.id
-      this.curRequest.requestor = this.employee.lastName + ' ' + this.employee.firstName.charAt(0) + ' ' + this.employee.patronymic.charAt(0) + '. (' + employeeShortDepName + ')'
+      this.curRequest.requestor = this.employee.lastName + ' ' + this.employee.firstName.charAt(0).toUpperCase() + '.' + this.employee.patronymic.charAt(0).toUpperCase() + '. (' + employeeShortDepName + ')'
       this.curRequest.requestorId = this.employee.id
       store.dispatch('request/createRequest', this.curRequest)
       this.$router.push({ name: 'HomePage' })
