@@ -8,7 +8,7 @@
         на обеспечение сотрудника канцелярскими товарами и мебелью
       </v-card-subtitle>
       <v-card-content>
-        <v-card-text class="pl-6 main-paragraph">
+        <v-card-text>
           <p>
             &nbsp;&nbsp;&nbsp;Прошу обеспечить нового сотрудника
             <span>
