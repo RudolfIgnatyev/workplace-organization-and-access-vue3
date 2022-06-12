@@ -1,33 +1,25 @@
 <template>
-  <v-card
-    tile
-    max-width="80vw"
-    class="mx-auto"
-  >
+  <v-card tile max-width="95vw" class="mx-auto">
     <v-card-content>
       <v-list tile>
         <v-list-subheader>
           Шаблоны заявок:
         </v-list-subheader>
-        <v-list-item
-          v-for="(item, i) in mainMenuList"
-          :key="`main-menu-item-${i}`"
-          @click="goToRoute(item.componentName)"
-          active-color="primary"
-        >
+        <v-list-item v-for="(item, i) in mainMenuList" :key="`main-menu-item-${i}`"
+          @click="goToRoute(item.componentName)" active-color="primary">
           <v-list-item-title v-text="item.text"></v-list-item-title>
         </v-list-item>
       </v-list>
     </v-card-content>
-    <v-card-actions>
-      <v-btn elevation="1">Мои заявки / Архив</v-btn>
+    <v-card-actions class="pl-8 pb-8">
+      <v-btn @click="goToRoute('MyRequests')" elevation="1">
+        Мои заявки / Архив
+      </v-btn>
     </v-card-actions>
   </v-card>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   name: 'HomePage',
   data: () => ({
@@ -61,18 +53,6 @@ export default {
   methods: {
     goToRoute: function (componentName) {
       this.$router.push({ name: componentName })
-    }
-  },
-  computed: {
-    ...mapGetters({
-      employee: 'employee/getEmployee'
-    })
-  },
-  watched: {
-    'employee'(newVal) {
-      if (newVal === 0) {
-        this.$router.push({ name: 'AuthorizeForm' })
-      }
     }
   }
 }

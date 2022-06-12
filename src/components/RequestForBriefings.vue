@@ -45,7 +45,7 @@
       </v-card-content>
     </v-col>
     <v-card-actions class="pr-8 pb-8 d-flex justify-end">
-      <v-btn @click="sendRequest" elevation="1">
+      <v-btn :disabled="(selectedEmployeeId === 0) && (selectedChiefId === 0)" @click="sendRequest" elevation="1">
         Отправить
       </v-btn>
     </v-card-actions>

@@ -10,7 +10,7 @@ const state = () => ({
       firstName: 'Иван',
       patronymic: 'Иванович',
       department: 'Отдел информационных систем',
-      position: 'системный администратор',
+      position: 'Системный администратор',
       timeCardNumber: '12345678910',
       login: 'admin',
       password: 'admin',
@@ -49,12 +49,11 @@ const getters = {
 // actions
 const actions = {
   authorize({ commit, state }, account) {
-    const employee = state.employeeList.find(el => (el.login === account.login) && (el.password === account.password))
-    if (employee) commit('setEmployee', { employee })
+    const registeredUser = state.employeeList.find(el => (el.login === account.login) && (el.password === account.password))
+    if (registeredUser) commit('setEmployee', { registeredUser })
   },
   logout({ commit }) {
-    const defaultEmployee = new Employee()
-    commit('unsetEmployee', { defaultEmployee })
+    commit('unsetEmployee')
   },
   createAccount({ commit, state }, employee) {
     const registeredUser = state.employeeList.find(el => el.login === employee.login)
@@ -80,11 +79,22 @@ const actions = {
 
 // mutations
 const mutations = {
-  setEmployee(state, { employee }) {
-    state.currentEmployee = employee
+  setEmployee(state, { registeredUser }) {
+    state.currentEmployee = { ...registeredUser }
   },
-  unsetEmployee(state, { employee }) {
-    state.currentEmployee = { ...employee }
+  unsetEmployee(state) {
+    state.currentEmployee = {
+      id: 0,
+      lastName: '',
+      firstName: '',
+      patronymic: '',
+      department: '',
+      position: '',
+      timeCardNumber: '',
+      login: '',
+      password: '',
+      type: 'пользователь'
+    }
   },
   pushEmployeeToEmployeeList(state, { employee }) {
     state.employeeList.push(employee)

@@ -63,7 +63,7 @@ export default {
     }
   },
   mounted() {
-    const authStatus = { ...store.getters['employee/getAuthStatus'] }
+    const authStatus = store.getters['employee/getAuthStatus']
     if (authStatus === 1) {
       this.$router.push({ name: 'HomePage' })
     }

@@ -46,7 +46,7 @@ export default {
   },
   mounted() {
     this.myAccount = { ...store.getters['employee/getEmployee'] }
-    this.employeeList = { ...store.getters['employee/getEmployeeList'] }
+    this.employeeList = store.getters['employee/getEmployeeList'].slice(0)
   }
 }
 </script>

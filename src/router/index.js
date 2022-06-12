@@ -10,6 +10,7 @@ import AuthorizeForm from '../components/AuthorizeForm.vue'
 import EditAccount from '../components/EditAccount.vue'
 import SignupEmployee from '../components/SignupEmployee.vue'
 import ManageAccounts from '../components/ManageAccounts.vue'
+import MyRequests from '../components/MyRequests.vue'
 import store from '@/store'
 
 const routes = [
@@ -37,6 +38,11 @@ const routes = [
     path: '/manage-accounts',
     name: 'ManageAccounts',
     component: ManageAccounts
+  },
+  {
+    path: '/my-requests',
+    name: 'MyRequests',
+    component: MyRequests
   },
   {
     path: '/request-for-room-access',
@@ -82,7 +88,7 @@ const router = createRouter({
 
 router.beforeEach((to) => {
   const authStatus = store.getters['employee/getAuthStatus']
-  if (authStatus === 0 && to.name !== 'AuthorizeForm') {
+  if ((authStatus === 0) && (to.name !== 'AuthorizeForm')) {
     return { name: 'AuthorizeForm' }
   }
 })

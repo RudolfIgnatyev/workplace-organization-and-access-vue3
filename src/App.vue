@@ -18,7 +18,7 @@
               mdi-account-edit
             </v-icon>
           </v-avatar>
-          <v-avatar v-if="employee.type = 'администратор'" @click="goToRoute('ManageAccounts', null)" color="primary" tile class="ml-3">
+          <v-avatar v-if="employee.type === 'администратор'" @click="goToRoute('ManageAccounts', null)" color="primary" tile class="ml-3">
             <v-icon>
               mdi-account-multiple-plus
             </v-icon>
