@@ -37,6 +37,44 @@
     </v-card-content>
   </v-card>
   <v-card tile max-width="95vw" class="mx-auto my-3">
+    <v-card-title @click="fromMeArchiveReqVisibility = !fromMeArchiveReqVisibility">
+      Архивные исходящие
+      <v-icon v-if="fromMeArchiveReqVisibility">
+        mdi-arrow-up
+      </v-icon>
+      <v-icon v-else-if="!fromMeArchiveReqVisibility">
+        mdi-arrow-down
+      </v-icon>
+    </v-card-title>
+    <v-card-content>
+      <v-table v-show="fromMeArchiveReqVisibility" density="compact">
+        <thead>
+          <tr>
+            <th class="text-center">Код. №</th>
+            <th class="text-center">Наименование</th>
+            <th class="text-center">Табельный № нов. сотр.</th>
+            <th class="text-center">Дата отправки</th>
+            <th class="text-center">Статус</th>
+            <th class="text-center">Срок исполнения</th>
+            <th class="text-center">Адресат</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="fromMeArchiveReq in fromMeArchiveRequestList" :key="`from-me-archive-req-${fromMeArchiveReq.id}`">
+            <td>{{ fromMeArchiveReq.id }}</td>
+            <td>{{ fromMeArchiveReq.title }}</td>
+            <td>{{ fromMeArchiveReq.timeCardNumber }}</td>
+            <td>{{ fromMeArchiveReq.sendingDate }}</td>
+            <td>{{ fromMeArchiveReq.state }}</td>
+            <td>{{ fromMeArchiveReq.deadline }}</td>
+            <td>{{ fromMeArchiveReq.addressee }}</td>
+          </tr>
+        </tbody>
+      </v-table>
+    </v-card-content>
+  </v-card>
+  <v-divider></v-divider>
+  <v-card tile max-width="95vw" class="mx-auto my-3">
     <v-card-title @click="forMeActiveReqVisibility = !forMeActiveReqVisibility">
       Активные входящие
       <v-icon v-if="forMeActiveReqVisibility">
@@ -134,10 +172,12 @@ export default {
     return {
       myAccount: null,
       curRequest: new Request(),
-      forMeActiveRequestList: [],
       fromMeActiveRequestList: [],
+      fromMeArchiveRequestList: [],
+      forMeActiveRequestList: [],
       forMeArchiveRequestList: [],
       fromMeActiveReqVisibility: true,
+      fromMeArchiveReqVisibility: true,
       forMeActiveReqVisibility: true,
       forMeArchiveReqVisibility: true
     }
@@ -153,10 +193,14 @@ export default {
     },
     getAllRequests: function () {
       this.fromMeActiveRequestList = []
+      this.fromMeArchiveRequestList = []
       this.forMeActiveRequestList = []
       this.forMeArchiveRequestList = []
       store.getters['request/getFromMeActiveRequestList'](this.myAccount.id).slice(0).forEach(el => {
         this.fromMeActiveRequestList.push(el)
+      })
+      store.getters['request/getFromMeArchiveRequestList'](this.myAccount.id).slice(0).forEach(el => {
+        this.fromMeArchiveRequestList.push(el)
       })
       store.getters['request/getForMeActiveRequestList'](this.myAccount.id).slice(0).forEach(el => {
         this.forMeActiveRequestList.push(el)

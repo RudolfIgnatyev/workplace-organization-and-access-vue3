@@ -11,6 +11,11 @@ const getters = {
       && (el.requestorId === requestorId)
     )
   },
+  getFromMeArchiveRequestList: (state) => (requestorId) => {
+    return state.requestList.filter(el =>
+      (el.state === 'Завершена') && (el.requestorId === requestorId)
+    )
+  },
   getForMeActiveRequestList: (state) => (addresseeId) => {
     return state.requestList.filter(el =>
       ((el.state === 'Отправлена') || (el.state === 'В работе'))

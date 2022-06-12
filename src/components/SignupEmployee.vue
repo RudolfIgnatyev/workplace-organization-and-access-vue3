@@ -33,8 +33,8 @@
             variant="outlined" counter="20" maxlength="20">
           </v-text-field>
           <v-radio-group v-model="curEmployee.type">
-            <v-radio label="пользователь" value="Тип аккаунта: пользователь"></v-radio>
-            <v-radio label="администратор" value="Тип аккаунта: администратор"></v-radio>
+            <v-radio :value="accountTypeList[0]" label="Тип аккаунта: администратор"></v-radio>
+            <v-radio :value="accountTypeList[1]" label="Тип аккаунта: пользователь"></v-radio>
           </v-radio-group>
         </v-form>
       </v-card-content>
