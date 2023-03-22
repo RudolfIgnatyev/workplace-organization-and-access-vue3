@@ -1,5 +1,5 @@
 # Проект: Организация рабочего места и доступ к ИР
-## [Проект на GitHub Pages]([https://rudolfignatyev.github.io/mesto-react/](https://rudolfignatyev.github.io/workplace-organization-and-access-vue3/authorize-form) "Организация рабочего места и доступ к ИР")
+## [Проект на GitHub Pages](https://rudolfignatyev.github.io/workplace-organization-and-access-vue3/authorize-form "Организация рабочего места и доступ к ИР")
 ===
 Проектная работа представлена сайтом из 1 страницы, разбитой на секции. Тематика - учёт заявок для организации рабочего места и доступ к ИР пользоателями, для которых аккаунты создает администратор (с логином admin и паролем admin). Эта проектная работа
 * имеет: **flex-сетку**;
