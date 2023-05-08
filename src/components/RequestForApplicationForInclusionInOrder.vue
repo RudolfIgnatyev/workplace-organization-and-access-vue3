@@ -17,10 +17,18 @@
             </span>
             с табельным номером
           </p>
-          <v-select v-model="selectedEmployeeId" :items="timeCardNumberList" @update:model-value="getAnotherEmployee"
-            item-title="timeCardNumber" item-value="id" label="Табельный номер" variant="outlined" density="comfortable"
-            return-object class="mt-4">
-          </v-select>
+          <v-select
+            v-model="selectedEmployeeId"
+            :items="timeCardNumberList"
+            @update:model-value="getAnotherEmployee"
+            item-title="timeCardNumber"
+            item-value="id"
+            label="Табельный номер"
+            variant="outlined"
+            density="comfortable"
+            return-object
+            class="mt-4"
+          ></v-select>
           <p>
             , назначенного на должность
             <span>
@@ -45,16 +53,27 @@
             <span>
               {{ curChief.department }}
             </span>
-            <v-select v-model="selectedChiefId" :items="chiefFullNameList" @update:model-value="getChief"
-              item-title="fullName" item-value="id" label="ФИО начальника" variant="outlined" density="comfortable"
-              return-object class="mt-4">
-            </v-select>
+            <v-select
+              v-model="selectedChiefId"
+              :items="chiefFullNameList"
+              @update:model-value="getChief"
+              item-title="fullName"
+              item-value="id"
+              label="ФИО начальника"
+              variant="outlined"
+              density="comfortable"
+              return-object
+              class="mt-4"
+            ></v-select>
           </p>
         </v-card-text>
       </v-card-content>
     </v-col>
     <v-card-actions class="pr-8 pb-8 d-flex justify-end">
-      <v-btn @click="sendRequest" elevation="1">
+      <v-btn
+        @click="sendRequest"
+        elevation="1"
+      >
         Отправить
       </v-btn>
     </v-card-actions>
