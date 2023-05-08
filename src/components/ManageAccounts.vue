@@ -20,7 +20,10 @@
       <v-card-subtitle>
         Если сотрудник не имеет аккаунта, то перейдите
       </v-card-subtitle>
-      <v-btn @click="goToRoute('SignupEmployee', null)" elevation="1">
+      <v-btn
+        @click="goToRoute('SignupEmployee', null)"
+        elevation="1"
+      >
         К регистрации
       </v-btn>
     </v-card-actions>

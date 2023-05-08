@@ -9,7 +9,7 @@ class Employee {
     this.timeCardNumber = ''
     this.login = '',
     this.password = '',
-    this.type = 'пользователь'
+    this.type = ''
   }
 }
 

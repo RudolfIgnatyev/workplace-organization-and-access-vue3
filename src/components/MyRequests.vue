@@ -10,7 +10,10 @@
       </v-icon>
     </v-card-title>
     <v-card-content>
-      <v-table v-show="fromMeActiveReqVisibility" density="compact">
+      <v-table
+        v-show="fromMeActiveReqVisibility"
+        density="compact"
+      >
         <thead>
           <tr>
             <th class="text-center">Код. №</th>
@@ -23,7 +26,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="fromMeActiveReq in fromMeActiveRequestList" :key="`from-me-active-req-${fromMeActiveReq.id}`">
+          <tr
+            v-for="fromMeActiveReq in fromMeActiveRequestList"
+            :key="`from-me-active-req-${fromMeActiveReq.id}`"
+          >
             <td>{{ fromMeActiveReq.id }}</td>
             <td>{{ fromMeActiveReq.title }}</td>
             <td>{{ fromMeActiveReq.timeCardNumber }}</td>
@@ -47,7 +53,10 @@
       </v-icon>
     </v-card-title>
     <v-card-content>
-      <v-table v-show="fromMeArchiveReqVisibility" density="compact">
+      <v-table
+        v-show="fromMeArchiveReqVisibility"
+        density="compact"
+      >
         <thead>
           <tr>
             <th class="text-center">Код. №</th>
@@ -60,7 +69,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="fromMeArchiveReq in fromMeArchiveRequestList" :key="`from-me-archive-req-${fromMeArchiveReq.id}`">
+          <tr
+            v-for="fromMeArchiveReq in fromMeArchiveRequestList"
+            :key="`from-me-archive-req-${fromMeArchiveReq.id}`"
+          >
             <td>{{ fromMeArchiveReq.id }}</td>
             <td>{{ fromMeArchiveReq.title }}</td>
             <td>{{ fromMeArchiveReq.timeCardNumber }}</td>
@@ -85,7 +97,10 @@
       </v-icon>
     </v-card-title>
     <v-card-content>
-      <v-table v-show="forMeActiveReqVisibility" density="compact">
+      <v-table
+        v-show="forMeActiveReqVisibility"
+        density="compact"
+      >
         <thead>
           <tr>
             <th class="text-center">Код. №</th>
@@ -98,9 +113,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="forMeActiveReq in forMeActiveRequestList" :key="`for-me-active-req-${forMeActiveReq.id}`"
+          <tr
+            v-for="forMeActiveReq in forMeActiveRequestList"
+            :key="`for-me-active-req-${forMeActiveReq.id}`"
             :class="curRequest.id === forMeActiveReq.id ? 'tr-for-me-active__selected' : 'tr-for-me-active__unselected'"
-            @click="setCurRequest(forMeActiveReq)">
+            @click="setCurRequest(forMeActiveReq)"
+          >
             <td>{{ forMeActiveReq.id }}</td>
             <td>{{ forMeActiveReq.title }}</td>
             <td>{{ forMeActiveReq.timeCardNumber }}</td>
@@ -113,12 +131,20 @@
       </v-table>
     </v-card-content>
     <v-card-actions class="pl-8 pb-8">
-      <v-btn v-show="curRequest.state === 'Отправлена'" @click="processRequest('В работе')" elevation="1"
-        class="v-btn__take">
+      <v-btn
+        v-show="curRequest.state === 'Отправлена'"
+        @click="processRequest('В работе')"
+        elevation="1"
+        class="v-btn__take"
+      >
         Принять
       </v-btn>
-      <v-btn v-show="curRequest.state === 'В работе'" @click="processRequest('Завершена')" elevation="1"
-        class="v-btn__complete">
+      <v-btn
+        v-show="curRequest.state === 'В работе'"
+        @click="processRequest('Завершена')"
+        elevation="1"
+        class="v-btn__complete"
+      >
         Завершить
       </v-btn>
     </v-card-actions>
@@ -134,7 +160,10 @@
       </v-icon>
     </v-card-title>
     <v-card-content>
-      <v-table v-show="forMeArchiveReqVisibility" density="compact">
+      <v-table
+        v-show="forMeArchiveReqVisibility"
+        density="compact"
+      >
         <thead>
           <tr>
             <th class="text-center">Код. №</th>
@@ -147,7 +176,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="forMeArchiveReq in forMeArchiveRequestList" :key="`for-me-active-req-${forMeArchiveReq.id}`">
+          <tr
+            v-for="forMeArchiveReq in forMeArchiveRequestList"
+            :key="`for-me-active-req-${forMeArchiveReq.id}`"
+          >
             <td>{{ forMeArchiveReq.id }}</td>
             <td>{{ forMeArchiveReq.title }}</td>
             <td>{{ forMeArchiveReq.timeCardNumber }}</td>

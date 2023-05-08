@@ -5,14 +5,21 @@
         <v-list-subheader>
           Шаблоны заявок:
         </v-list-subheader>
-        <v-list-item v-for="(item, i) in mainMenuList" :key="`main-menu-item-${i}`"
-          @click="goToRoute(item.componentName)" active-color="primary">
+        <v-list-item
+          v-for="(item, i) in mainMenuList"
+          :key="`main-menu-item-${i}`"
+          @click="goToRoute(item.componentName)"
+          active-color="primary"
+        >
           <v-list-item-title v-text="item.text"></v-list-item-title>
         </v-list-item>
       </v-list>
     </v-card-content>
     <v-card-actions class="pl-8 pb-8">
-      <v-btn @click="goToRoute('MyRequests')" elevation="1">
+      <v-btn
+        @click="goToRoute('MyRequests')"
+        elevation="1"
+      >
         Мои заявки / Архив
       </v-btn>
     </v-card-actions>

@@ -6,15 +6,33 @@
       </v-card-title>
       <v-card-content>
         <v-form v-model="isValidating">
-          <v-text-field v-model="login" :rules="[rules.required]" label="Логин" type="login" variant="outlined"
-            counter="15" maxlength="15" autofocus></v-text-field>
-          <v-text-field v-model="password" :rules="[rules.required]" label="Пароль" type="password" variant="outlined"
-            counter="20" maxlength="20"></v-text-field>
+          <v-text-field
+            v-model="login"
+            :rules="[rules.required]"
+            label="Логин"
+            type="login"
+            variant="outlined"
+            counter="15"
+            maxlength="15"
+            autofocus
+          ></v-text-field>
+          <v-text-field
+            v-model="password"
+            :rules="[rules.required]"
+            label="Пароль"
+            type="password"
+            variant="outlined"
+            counter="20"
+            maxlength="20"
+          ></v-text-field>
         </v-form>
       </v-card-content>
     </v-container>
     <v-card-actions class="pr-8 pb-8 d-flex justify-end">
-      <v-btn @click="authorize" elevation="1">
+      <v-btn
+        @click="authorize"
+        elevation="1"
+      >
         Авторизоваться
       </v-btn>
     </v-card-actions>

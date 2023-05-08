@@ -2,23 +2,43 @@
   <v-app app>
     <v-app-bar>
       <template v-slot:prepend>
-        <v-btn v-if="employee.id > 0" @click="goToRoute('HomePage', null)" elevation="1" class="ml-5">
+        <v-btn
+          v-if="employee.id > 0"
+          @click="goToRoute('HomePage', null)"
+          elevation="1"
+          class="ml-5"
+        >
           К главной странице
         </v-btn>
       </template>
       <template v-slot:append>
         <div v-if="employee.id > 0">
-          <v-avatar @click="inStateOfConfirmation = true" color="warning" tile>
+          <v-avatar
+            @click="inStateOfConfirmation = true"
+            color="warning"
+            tile
+          >
             <v-icon>
               mdi-account-minus
             </v-icon>
           </v-avatar>
-          <v-avatar @click="goToRoute('EditAccount', employee.id)" color="primary" tile class="ml-3">
+          <v-avatar
+            @click="goToRoute('EditAccount', employee.id)"
+            color="primary"
+            tile
+            class="ml-3"
+          >
             <v-icon>
               mdi-account-edit
             </v-icon>
           </v-avatar>
-          <v-avatar v-if="employee.type === 'администратор'" @click="goToRoute('ManageAccounts', null)" color="primary" tile class="ml-3">
+          <v-avatar
+            v-if="employee.type === 'администратор'"
+            @click="goToRoute('ManageAccounts', null)"
+            color="primary"
+            tile
+            class="ml-3"
+          >
             <v-icon>
               mdi-account-multiple-plus
             </v-icon>
